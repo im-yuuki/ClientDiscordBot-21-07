@@ -1,0 +1,13 @@
+{
+    "chat_xp_min": 35,
+    "chat_xp_max": 60,
+    "chat_xp_cooldown": 45,
+    "chat_effective_channel": [1255555849032564789, 1234059884043960401],
+    "booster_extra_xp_percent": 10,
+    "level_up_notification": true,
+    "level_role": [
+        { "level": 5, "role_id": 1259949809008382023 },
+        { "level": 10, "role_id": 1259949543449952406 },
+        { "level": 20, "role_id": 1259949353259241502 }
+    ]
+}
