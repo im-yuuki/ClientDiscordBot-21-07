@@ -173,7 +173,7 @@ XP: {xp} / {'UNLIMITED' if current_level == LEVEL_XP_LIMIT.__len__() else LEVEL_
     async def xp_add(self, inter: disnake.ApplicationCommandInteraction) -> None:
         if inter.guild_id is None: return
         if inter.guild_id != MASTER_GUILD_ID: return
-        member = inter.options["add"].get("member", None)
+        member = inter.options["add"].get("member", inter.author)
         if not isinstance(member, disnake.Member):
             return await inter.response.send_message("❌ Tham số nhập vào không hợp lệ", ephemeral=EPHEMERAL_ERROR_ACTION)
         if member.bot:
@@ -184,7 +184,7 @@ XP: {xp} / {'UNLIMITED' if current_level == LEVEL_XP_LIMIT.__len__() else LEVEL_
         if amount < 1:
             return await inter.response.send_message("❌ Giá trị không được phép nhỏ hơn 1", ephemeral=EPHEMERAL_ERROR_ACTION)
         await inter.response.defer(ephemeral=EPHEMERAL_AUDIT_ACTION)
-        await self.__process__(inter.channel, inter.author, amount)
+        await self.__process__(inter.channel, member, amount)
         await inter.edit_original_response(f"✅ Đã thêm `{amount} xp` cho thành viên {member.mention}")
 
 
@@ -210,7 +210,7 @@ XP: {xp} / {'UNLIMITED' if current_level == LEVEL_XP_LIMIT.__len__() else LEVEL_
     async def xp_remove(self, inter: disnake.ApplicationCommandInteraction) -> None:
         if inter.guild_id is None: return
         if inter.guild_id != MASTER_GUILD_ID: return
-        member = inter.options["remove"].get("member", None)
+        member = inter.options["remove"].get("member", inter.author)
         if not isinstance(member, disnake.Member):
             return await inter.response.send_message("❌ Tham số nhập vào không hợp lệ", ephemeral=EPHEMERAL_ERROR_ACTION)
         if member.bot:
