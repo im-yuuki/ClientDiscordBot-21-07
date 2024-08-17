@@ -13,7 +13,7 @@ from utils.configuration import MASTER_GUILD_ID, EPHEMERAL_AUDIT_ACTION, EPHEMER
 MessageableChannel = disnake.TextChannel, disnake.Thread, disnake.VoiceChannel, disnake.StageChannel, disnake.PartialMessageable
 
 
-LEVEL_LIMIT = 1000
+LEVEL_LIMIT = 99999
 LEVEL_XP_LIMIT = [100]
 for i in range(2, LEVEL_LIMIT + 1): LEVEL_XP_LIMIT.append(100 * i + LEVEL_XP_LIMIT[-1])
 
